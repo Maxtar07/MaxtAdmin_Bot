@@ -36,8 +36,8 @@ client.login(client.config.TOKEN);
 
   const axios = require('axios');
 
-  const clientid = "8bzzg3dc0e7a663esqfbsf41sgo7pu"
-  const clientsecret = "8cm2ff8r0tfcsqt034kwybtvvpb36z"
+  const clientid = "mon_client_id"
+  const clientsecret = "mon_client_secret"
   const streamer = 'maxtar07'
 
   const db = require('./models/streams')
@@ -165,7 +165,7 @@ const options = {
     },
     identity: {
         username: 'MaxtAdmin',
-        password: 'oauth:st4embc2z4bt55chcgog9q2zzw6n15',
+        password: 'password',
     },
     channels: ['maxtar07'],
 };
