@@ -1,0 +1,28 @@
+{
+  "name": "maxtadmin",
+  "version": "1.0.0",
+  "description": "Mon bot discord personnalisé pour la gestion de mon serveur discord",
+  "main": "main.js",
+  "scripts": {
+    "lavalink": "java -jar Lavalink.jar",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maxtar07",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "discord-player": "^4.1.0",
+    "discord.js": "^12.4.1",
+    "erela.js": "^2.3.3",
+    "express": "^4.17.1",
+    "ffmpeg-static": "^4.3.0",
+    "mathjs": "^9.4.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.20",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "tmi.js": "^1.8.3"
+  }
+}
