@@ -37,7 +37,7 @@ module.exports = async (client, messageReaction, user) => {
   var gameur = message.guild.roles.cache.find(g => g.id === "726428190012211213");
   var gameuse = message.guild.roles.cache.find(gs => gs.id === "726428190012211214");
 
-  var ps4 = message.guild.roles.cache.find(x => x.id === "726428190012211211");
+  var playstation = message.guild.roles.cache.find(x => x.id === "726428190012211211");
   var pc = message.guild.roles.cache.find(x => x.id === "726428190012211212");
   var switchrole = message.guild.roles.cache.find(x => x.id === "726428189991108677");
   var xbox = message.guild.roles.cache.find(x => x.id === "726428190012211210");
@@ -186,12 +186,12 @@ module.exports = async (client, messageReaction, user) => {
       };
     };
 
-    if (['ps4', 'pc', 'switch', 'xbox', 'smartphone'].includes(emoji) && message.channel.id === choixjeuxchannel.id) {
+    if (['playstation', 'pc', 'switch', 'xbox', 'smartphone'].includes(emoji) && message.channel.id === choixjeuxchannel.id) {
       switch (emoji) {
-        case 'ps4':
+        case 'playstation':
           if (!member.roles.cache.find(x => x.id === "726428190012211211")) {
-            member.roles.add(ps4).then(() => {
-              member.send(`Tu as bien obtenu le rôle ${ps4.name}.`).catch(console.error)
+            member.roles.add(playstation).then(() => {
+              member.send(`Tu as bien obtenu le rôle ${playstation.name}.`).catch(console.error)
             });
           }
           break;

@@ -10,7 +10,7 @@ module.exports.run = async (client, message) => {
   var gameur = message.guild.roles.cache.find(x => x.id === "726428190012211213");
   var gameuse = message.guild.roles.cache.find(x => x.id === "726428190012211214");
 
-  var ps4 = message.guild.roles.cache.find(x => x.id === "726428190012211211");
+  var playstation = message.guild.roles.cache.find(x => x.id === "726428190012211211");
   var pc = message.guild.roles.cache.find(x => x.id === "726428190012211212");
   var switchrole = message.guild.roles.cache.find(x => x.id === "726428189991108677");
   var xbox = message.guild.roles.cache.find(x => x.id === "726428190012211210");
@@ -32,10 +32,7 @@ module.exports.run = async (client, message) => {
   const gtavemoji = client.emojis.cache.find(emoji => emoji.name === "gtav")
   const nintendoemoji = client.emojis.cache.find(emoji => emoji.name === "nintendo")
   const animalemoji = client.emojis.cache.find(emoji => emoji.name === "animalcrossing")
-  const sexemoji = client.emojis.cache.find(emoji => emoji.name === "sex")
-  const sexhardemoji = client.emojis.cache.find(emoji => emoji.name === "sexhard")
-  const goreemoji = client.emojis.cache.find(emoji => emoji.name === "gore")
-  const ps4emoji = client.emojis.cache.find(emoji => emoji.name === "ps4")
+  const playstationemoji = client.emojis.cache.find(emoji => emoji.name === "playstation")
   const pcemoji = client.emojis.cache.find(emoji => emoji.name === "pc")
   const switchemoji = client.emojis.cache.find(emoji => emoji.name === "switch")
   const xboxemoji = client.emojis.cache.find(emoji => emoji.name === "xbox")
@@ -147,14 +144,14 @@ client.channels.cache.get("726428190427447365").send(notifs_embed).then(function
 Si vous pensez à d'autres plateformes de jeux n'hésitez pas à faire vos <#726428191568298006> pour que l'on puisse les rajouter.`)
     .addField(`Pour t'ajouter ou t'enlever un rôle, il te suffit de réagir avec l'emoji qui correspond...`,
       `
-      ${ps4emoji} - Si tu joue sur ${ps4}
+      ${playstationemoji} - Si tu joue sur ${playstation}
       ${pcemoji} - Si tu joue sur ${pc}
       ${switchemoji} - Si tu joue sur ${switchrole}
       ${xboxemoji} - Si tu joue sur ${xbox}
       ${smartphoneemoji} - Si tu joue sur un ${telephone}
         `)
   client.channels.cache.get("726428191568298008").send(plateform_embed).then(function (message) {//salon choisir sa plateforme, catégorie gaming
-    message.react(ps4emoji).then(() => {
+    message.react(playstationemoji).then(() => {
       message.react(pcemoji).then(() => {
         message.react(switchemoji).then(() => {
           message.react(xboxemoji).then(() => {
