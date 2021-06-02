@@ -1,6 +1,6 @@
 const { MESSAGES } = require('../../util/constantes');
 
-module.exports.run = async (client, message) => {
+module.exports.run = async (client, message, track) => {
 
     if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - Veuillez rejoindre le salon vocal musique !`);
 
@@ -8,7 +8,7 @@ module.exports.run = async (client, message) => {
 
     client.player.skip(message);
 
-    message.channel.send(`${client.emotes.success} - La musique actuelle à été **passée** !`);
+    message.channel.send(`${client.emotes.success} - La musique \`${client.player.getQueue(message).playing.title}\` à été **passée** !`);
 
 };
 
