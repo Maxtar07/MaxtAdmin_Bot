@@ -72,7 +72,7 @@ module.exports = async (client, message) => {
     message.channel.id === '726428195636903969' ||
     message.channel.id === '741061694909972510' ||
     message.channel.id === '726428195636903970' ||
-    message.member.roles.cache.find(m => m.name === "BOSS"))) && (message.content.toLocaleLowerCase().includes('discord.gg'))) {
+    message.member.roles.cache.find(m => m.id === "726428190024925208"))) && (message.content.toLocaleLowerCase().includes('discord.gg'))) {
       if(!logchannel) return
       logchannel.send(`${message.member.user.tag} à mis une pub de serveur discord dans le salon ${message.channel.name}`);
       message.delete({ timeout: 0 }).then(() => {
@@ -85,7 +85,7 @@ module.exports = async (client, message) => {
 
   //antipub youtube
   if ((!(message.channel.id === '726428195636903971' ||
-    message.member.roles.cache.find(m => m.name === "BOSS"))) && (message.content.toLocaleLowerCase().includes('youtube.com/channel'))) {
+    message.member.roles.cache.find(m => m.id === "726428190024925208"))) && (message.content.toLocaleLowerCase().includes('youtube.com/channel'))) {
       if(!logchannel) return
       logchannel.send(`${message.member.user.tag} à mis une pub de chaine YouTube dans le salon ${message.channel.name}`);
       message.delete({ timeout: 0 }).then(() => {
@@ -96,7 +96,7 @@ module.exports = async (client, message) => {
   }
   //antipub twitch
   if ((!(message.channel.id === '726428195636903972' ||
-    message.member.roles.cache.find(m => m.name === "BOSS"))) && (message.content.toLocaleLowerCase().includes('twitch.tv'))) {
+    message.member.roles.cache.find(m => m.id === "726428190024925208"))) && (message.content.toLocaleLowerCase().includes('twitch.tv'))) {
       if(!logchannel) return
       logchannel.send(`${message.member.user.tag} à mis une pub de chaine twitch dans le salon ${message.channel.name}`);
       message.delete({ timeout: 0 }).then(() => {
@@ -139,7 +139,7 @@ module.exports = async (client, message) => {
     return message.reply("tu n'as pas les permissions pour utiliser cette commande !");
   }
 
-  if (command.help.modo && !message.member.roles.cache.find(x => x.name === "Modérateurs")) {
+  if (command.help.modo && !message.member.roles.cache.find(x => x.id === "738812943613034566")) {
     message.delete()
     return message.reply("tu n'as pas les permissions pour utiliser cette commande !");
   }
@@ -164,7 +164,7 @@ module.exports = async (client, message) => {
     return message.reply("tu n'as pas les permissions pour utiliser cette commande !");
   }
 
-  if (command.help.dj && !message.member.roles.cache.find(x => x.name === "DJ")) {
+  if (command.help.dj && !message.member.roles.cache.find(x => x.id === "827181449551544371")) {
     message.delete()
     return message.reply("Tu dois être DJ pour pouvoir utiliser cette commande !");
   }
@@ -188,24 +188,24 @@ module.exports = async (client, message) => {
   if (command.help.isUserModo && !user) {
     message.reply('il faut mentionner un membre du serveur')
   }else{
-    if (command.help.isUserModo && message.guild.member(user).roles.cache.find(x => x.name === "Modérateurs") && message.member.roles.cache.find(x => x.name === "Modérateurs")) return message.reply("Tu ne peux pas utiliser cette commande sur un membre du même rang que toi !");
+    if (command.help.isUserModo && message.guild.member(user).roles.cache.find(x => x.id === "738812943613034566") && message.member.roles.cache.find(x => x.id === "738812943613034566")) return message.reply("Tu ne peux pas utiliser cette commande sur un membre du même rang que toi !");
   }
 
-  if (command.help.command && (!(message.channel.id === '735813289488941076' || message.member.roles.cache.find(x => x.name === "Modérateurs")))) {
+  if (command.help.command && (!(message.channel.id === '735813289488941076' || message.member.roles.cache.find(x => x.id === "738812943613034566")))) {
     message.delete()
     return message.reply(`Pour les commandes c'est ici : <#735813289488941076>`).then((message) => {
       message.delete({ timeout: 5000 });
     })
   }
 
-  if (command.help.musiccommand && (!(message.channel.id === '726428192403095625' || message.member.roles.cache.find(x => x.name === "Modérateurs")))) {
+  if (command.help.musiccommand && (!(message.channel.id === '726428192403095625' || message.member.roles.cache.find(x => x.id === "738812943613034566")))) {
     message.delete()
     return message.reply(`Pour les commandes de musique c'est ici : <#726428192403095625>`).then((message) => {
       message.delete({ timeout: 5000 });
     })
   }
 
-  if (command.help.pollcommand && (!(message.channel.id === '735813289488941076' || message.channel.id === '796397401384419349' || message.member.roles.cache.find(x => x.name === "Modérateurs")))) {
+  if (command.help.pollcommand && (!(message.channel.id === '735813289488941076' || message.channel.id === '796397401384419349' || message.member.roles.cache.find(x => x.id === "738812943613034566")))) {
     message.delete()
     return message.reply(`Pour faire un sondage c'est ici : <#735813289488941076> ou là : <#796397401384419349>`).then((message) => {
       message.delete({ timeout: 5000 });
@@ -223,7 +223,7 @@ module.exports = async (client, message) => {
   const timeNow = Date.now();
   const tStamps = client.cooldowns.get(command.help.name);
   let cdAmount
-  if(message.member.roles.cache.find(x => x.name === "Modérateurs")){
+  if(message.member.roles.cache.find(x => x.id === "738812943613034566")){
     cdAmount = 0
   }else{
     cdAmount = (command.help.cooldown) * 1000;
