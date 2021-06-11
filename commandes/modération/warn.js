@@ -8,7 +8,11 @@ module.exports.run = async(client, message, args) => {
     if(!user) return message.channel.send('Le membre n\'as pas été trouvé !')
     let reason
     const modoreason = args.slice(1).join(" ")
-    if (!modoreason) reason = "Le modérateur n'a spécifié aucune raison"
+    if (!modoreason){
+        reason = "Le modérateur n'a spécifié aucune raison"
+    }else{
+        reason = modoreason
+    }
     db.findOne({ guildid: message.guild.id, user: user.user.id}, async(err, data) => {
         if(err) throw err;
         if(!data) {
