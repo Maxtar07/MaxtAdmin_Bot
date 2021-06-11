@@ -8,7 +8,12 @@ module.exports.run = async(client, message, args) => {
     db.findOne({ guildid : message.guild.id, user: user.user.id}, async(err,data) => {
         if(err) throw err;
         if(data) {
-            let number = parseInt(args[1]) - 1
+            let number
+            if (!args[1]){
+                number = 0
+            }else{
+                number = parseInt(args[1]) - 1
+            }
             data.content.splice(number, 1)
             message.channel.send(`l\'avertissement numéro ${number +1} à été supprimé !`)
             data.save()
