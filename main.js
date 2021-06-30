@@ -189,33 +189,33 @@ twitchbot.on('message', (channel, userstate, message, self) => {
 twitchbot.connect();
 
 function onChatHandler(target, context, msg, self) {
-    if (self) { return; }
+  if (self) { return; }
   
-    if (msg.startsWith("!discord")){
-      twitchbot.say(target, `Si tu veux rejoindre le discord officiel de la chaine pour discuter même si le stream est off : https://discord.gg/8epEQyE`);
-    }
-    if (msg.startsWith("!kgb")){
-      twitchbot.say(target, `Voici le pdf de l'UHC : https://drive.google.com/file/d/1wCwK4W_5JP2iXYxgY4owjbEmtlBKHkdh/view?usp=sharing`);
-    }
-    if (msg.startsWith("!skyrp")){
-      twitchbot.say(target, `serveur towny moderne avec entre-autre le plugin slimefun en 1.16.4 et +. IP : play.skyrp.eu || Discord : https://discord.gg/zebpQv6a9U || Site : https://skyrp.eu/`);
-    }
-    if (msg.startsWith("!craftard")){
-      twitchbot.say(target, `Craftard est un serveur survie 1.16.5 basée sur l'évolution et centrée sur différents systèmes ainsi que des mécanismes pour rendre le jeu plus agréable. IP : 79.137.91.246 et IP Bedrock (à lier avec votre compte mojang) : 79.137.91.246:25575 -- Trailer et lien discord: https://www.youtube.com/watch?v=IB4lBeYtz5Q`);
-    }
-    if (msg.startsWith("!olivekub")){
-      twitchbot.say(target, `Serveur privé whitelist pur vanilla en ultra hardcore, créer par le streamer et graphiste Olive || Pour retrouver toutes les chaines des participants : https://linktr.ee/oliv_kub`);
-    }
-    //if (msg.startsWith("!vocal")){
-    //  twitchbot.say(target, `Je suis en vocal avec les singes de la commu de vartac !`);
-    //}
-    if (msg.startsWith("!cystone")){
-      twitchbot.say(target, `Cystone est un serveur minecraft sur whitelist en 1.16.5 créer par le baizlagio sur un principe plutôt cool : reset la map tous les jour sauf sur une zone de 16 chunk au spawn`);
-    }
-    if (msg.startsWith("!test")){
-      twitchbot.say(target, `c'est un test`);
-    }
-  
+  if (msg.startsWith("!discord")){
+    twitchbot.say(target, `Si tu veux rejoindre le discord officiel de la chaine pour discuter même si le stream est off : https://discord.gg/8epEQyE`);
+  }
+  if (msg.startsWith("!kgb")){
+    twitchbot.say(target, `Voici le pdf de l'UHC : https://drive.google.com/file/d/1wCwK4W_5JP2iXYxgY4owjbEmtlBKHkdh/view?usp=sharing`);
+  }
+  if (msg.startsWith("!skyrp")){
+    twitchbot.say(target, `serveur towny moderne avec entre-autre le plugin slimefun en 1.16.4 et +. IP : play.skyrp.eu || Discord : https://discord.gg/zebpQv6a9U || Site : https://skyrp.eu/`);
+  }
+  if (msg.startsWith("!craftard")){
+    twitchbot.say(target, `Craftard est un serveur survie 1.16.5 basée sur l'évolution et centrée sur différents systèmes ainsi que des mécanismes pour rendre le jeu plus agréable. IP : 79.137.91.246 et IP Bedrock (à lier avec votre compte mojang) : 79.137.91.246:25575 -- Trailer et lien discord: https://www.youtube.com/watch?v=IB4lBeYtz5Q`);
+  }
+  if (msg.startsWith("!olivekub")){
+    twitchbot.say(target, `Serveur privé whitelist pur vanilla en ultra hardcore, créer par le streamer et graphiste Olive || Pour retrouver toutes les chaines des participants : https://linktr.ee/oliv_kub`);
+  }
+  //if (msg.startsWith("!vocal")){
+  //  twitchbot.say(target, `Je suis en vocal avec les singes de la commu de vartac !`);
+  //}
+  if (msg.startsWith("!cystone")){
+    twitchbot.say(target, `Cystone est un serveur minecraft sur whitelist en 1.16.5 créer par le baizlagio sur un principe plutôt cool : reset la map tous les jour sauf sur une zone de 16 chunk au spawn`);
+  }
+  if (msg.startsWith("!honoris")){
+    twitchbot.say(target, `Honoris est un serveur towny moddé. Vous pouvez rejoindre mon pays simplement en faisant votre candidature sur le discord du pays (Le brésil) : https://discord.gg/Y2r2TbrCd3.`);
+    twitchbot.say(target, `Si vous voulez plus d'infos concernant le serveur, vous pouvez aller sur le site : https://www.honoris-mc.fr ou leur discord : https://discord.gg/UWNn2nNvvR`);
+  }
 }
 
 function checkChat(channel, username, message) {
