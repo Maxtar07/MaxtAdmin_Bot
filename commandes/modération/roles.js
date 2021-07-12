@@ -51,14 +51,14 @@ module.exports.run = async (client, message) => {
       `
     🛏 - Pour obtenir le rôle ${detente} qui te donneras accès à la catégorie Détente où tu pourras raconter des <#726428191186485387>, poser des <#726428191186485386>, jouer à des jeux proposés par les bots et pleins d'autres choses amusantes...
 
-    🎮 - Pour obtenir le rôle ${gameuse} ou ${gameur} qui te donneras accès à la catégorie Gaming où tu pourras discuter de jeux vidéos et autres.Tu auras aussi la possibilité de <#726428191568298008> via des rôles et ainsi avoir accès à des salons spéciaux pour chaque jeu.
+    🎮 - Pour obtenir le rôle ${gameuse} ou ${gameur} qui te donneras accès à la catégorie Gaming où tu pourras discuter de jeux vidéos et autres.Tu auras aussi la possibilité de <#726428191568298008> pour avoir accès à des salons spéciaux pour chaque jeu et t'identifier pour savoir sur quelle(s) plateforme(s) tu joue.
     Si tu veux jouer sur mon serveur ${maxcraft}, c'est aussi via cette catégorie.
 
-    🎵 - Pour obtenir le rôle ${music} qui te donneras accès à la catégorie musique (<#726428192403095624>) où tu pourras discuter de chansons, d'artistes, etc... Il y a aussi des salons vocaux pour écouter la radio ou pour mettre la musique que tu veux.
+    🎵 - Pour obtenir le rôle ${music} qui te donneras accès à la catégorie musique (<#726428192403095624>) où tu pourras discuter de chansons, d'artistes, etc... Il y a aussi un salon vocal pour écouter les musiques que tu veux.
     `)
     .addField(`\u200b`,
       `
-    🔞 - Pour obtenir le rôle ${adult} qui te donneras accès à la catégorie Coin des grands (<#726428194705768490>) où tu pourras discuter de diverses choses plus ou moins réservées aux adultes comme la <#726428194705768491> par exemple
+    🔞 - Pour obtenir le rôle ${adult} qui te donneras accès à la catégorie Coin des grands (<#726428194705768490>) où tu pourras discuter de diverses choses plus ou moins réservées aux adultes comme la <#726428194705768491> par exemple.
 
     ${pubemoji} - Pour obtenir le rôle ${pubrole} qui te donneras accès à la catégorie Publicités où tu auras la possibilité de faire de la pub pour tout ce que tu veux (serveurs, chaines YT ou Twitch, etc...) mais cela te permettras de voir les pubs des autres et ainsi tu pourras faire des découvertes intéressantes.
     `)
@@ -148,7 +148,7 @@ Si vous pensez à d'autres plateformes de jeux n'hésitez pas à faire vos <#726
       ${pcemoji} - Si tu joue sur ${pc}
       ${switchemoji} - Si tu joue sur ${switchrole}
       ${xboxemoji} - Si tu joue sur ${xbox}
-      ${smartphoneemoji} - Si tu joue sur un ${telephone}
+      ${smartphoneemoji} - Si tu joue sur ${telephone}
         `)
   client.channels.cache.get("726428191568298008").send(plateform_embed).then(function (message) {//salon choisir sa plateforme, catégorie gaming
     message.react(playstationemoji).then(() => {
