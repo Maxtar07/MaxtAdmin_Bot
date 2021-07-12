@@ -118,20 +118,26 @@ module.exports = async (client, messageReaction, user) => {
     };
   };
 
-  if (['twitch', '🔔'].includes(emoji) && message.channel.id === choixrolesacceuilchannel.id) {
-    switch (emoji) {
-      case 'twitch':
-        member.roles.add(notiftwitch).then(() => {
-          member.send(`Tu as bien obtenu le rôle ${notiftwitch.name}.`).catch(console.error)
-        });
-        break;
-      case '🔔':
-        member.roles.add(notifgenerales).then(() => {
-          member.send(`Tu as bien obtenu le rôle ${notifgenerales.name}.`).catch(console.error)
-        });
-        break;
+  if ((member.roles.cache.find(m => m.id === "726428190012211216") || member.roles.cache.find(m => m.id === "726428190012211217") || member.roles.cache.find(m => m.id === "824740975242117191"))) {
+    if (['twitch', '🔔'].includes(emoji) && message.channel.id === choixrolesacceuilchannel.id) {
+      switch (emoji) {
+        case 'twitch':
+          member.roles.add(notiftwitch).then(() => {
+            member.send(`Tu as bien obtenu le rôle ${notiftwitch.name}.`).catch(console.error)
+          });
+          break;
+        case '🔔':
+          member.roles.add(notifgenerales).then(() => {
+            member.send(`Tu as bien obtenu le rôle ${notifgenerales.name}.`).catch(console.error)
+          });
+          break;
+      };
     };
-  };
+  } else {
+    if (!(message.channel.id === annoncesmembreschannel.id || message.channel.id === welcomechannel.id || message.channel.id === reglementchannel.id)) message.channel.send("Va dans le salon <#726428190427447360> ou <#726428190427447361> pour choisir ton genre avant de choisir les notifs que tu veux !!").then((msg) => {
+      msg.delete({ timeout: 10000 });
+    })
+  }
 
   if ((member.roles.cache.find(m => m.id === "726428190012211216") || member.roles.cache.find(m => m.id === "726428190012211217") || member.roles.cache.find(m => m.id === "824740975242117191"))) {
 
