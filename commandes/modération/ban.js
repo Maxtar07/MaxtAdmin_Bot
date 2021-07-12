@@ -8,7 +8,7 @@ module.exports.run = (client, message, args) => {
   if(!user) return message.channel.send('le membre spécifié n\'existe pas sur le serveur')
 
   message.guild.member(user).send(`tu as été ban du serveur ${message.guild.name} pour : ${reason}`)
-  message.guild.member(user).ban(reason)
+  message.guild.member(user).ban({ reason: reason })
 
   const embed = new Discord.MessageEmbed()
     .setAuthor(`${user.username} (${user.id})`, user.avatarURL())
