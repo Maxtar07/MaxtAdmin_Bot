@@ -134,9 +134,11 @@ module.exports = async (client, messageReaction, user) => {
       };
     };
   } else {
-    if (!(message.channel.id === annoncesmembreschannel.id || message.channel.id === welcomechannel.id || message.channel.id === reglementchannel.id)) message.channel.send("Va dans le salon <#726428190427447360> ou <#726428190427447361> pour choisir ton genre avant de choisir les notifs que tu veux !!").then((msg) => {
-      msg.delete({ timeout: 10000 });
-    })
+    if (['twitch', '🔔'].includes(emoji) && message.channel.id === choixrolesacceuilchannel.id) {
+      message.channel.send("Va dans le salon <#726428190427447360> ou <#726428190427447361> pour choisir ton genre avant de choisir les notifs que tu veux !!").then((msg) => {
+        msg.delete({ timeout: 10000 });
+      })
+    }
   }
 
   if ((member.roles.cache.find(m => m.id === "726428190012211216") || member.roles.cache.find(m => m.id === "726428190012211217") || member.roles.cache.find(m => m.id === "824740975242117191"))) {
@@ -284,9 +286,11 @@ module.exports = async (client, messageReaction, user) => {
       };
     };
   } else {
-    if (!(message.channel.id === annoncesmembreschannel.id || message.channel.id === welcomechannel.id || message.channel.id === reglementchannel.id)) message.channel.send("Va dans le salon <#726428190427447360> ou <#726428190427447361> pour choisir ton genre avant de choisir les catégories que tu veux !!").then((msg) => {
-      msg.delete({ timeout: 10000 });
-    })
+    if (['🛏', '🎮', '🎵', '🔞', 'pub', 'animalcrossing', 'minecraft', 'maxcraft', 'rocketleague', 'gtav', 'nintendo', 'playstation', 'pc', 'switch', 'xbox', 'smartphone'].includes(emoji) && message.channel.id === choixrolesacceuilchannel.id){
+      message.channel.send("Va dans le salon <#726428190427447360> ou <#726428190427447361> pour choisir ton genre avant de choisir les catégories que tu veux !!").then((msg) => {
+        msg.delete({ timeout: 10000 });
+      })
+    }
   }
 
 

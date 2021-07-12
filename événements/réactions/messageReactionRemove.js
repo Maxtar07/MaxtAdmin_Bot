@@ -108,14 +108,18 @@ module.exports = async (client, messageReaction, user) => {
   if (['twitch', '🔔'].includes(emoji) && message.channel.id === choixrolesacceuilchannel.id) {
     switch (emoji) {
       case 'twitch':
-        member.roles.remove(notiftwitch).then(() => {
-          member.send(`Tu n'as plus le rôle ${notiftwitch.name}.`).catch(console.error)
-        });
+        if (member.roles.cache.find(x => x.id === "756243894894854294")) {
+          member.roles.remove(notiftwitch).then(() => {
+            member.send(`Tu n'as plus le rôle ${notiftwitch.name}.`).catch(console.error)
+          });
+        }
         break;
       case '🔔':
-        member.roles.remove(notifgenerales).then(() => {
-          member.send(`Tu n'as plus le rôle ${notifgenerales.name}.`).catch(console.error)
-        });
+        if (member.roles.cache.find(x => x.id === "756244388413440171")) {
+          member.roles.remove(notifgenerales).then(() => {
+            member.send(`Tu n'as plus le rôle ${notifgenerales.name}.`).catch(console.error)
+          });
+        }
         break;
     };
   };
