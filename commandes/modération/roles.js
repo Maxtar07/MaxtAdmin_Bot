@@ -10,6 +10,13 @@ module.exports.run = async (client, message) => {
   var gameur = message.guild.roles.cache.find(x => x.id === "726428190012211213");
   var gameuse = message.guild.roles.cache.find(x => x.id === "726428190012211214");
 
+  var detenteclean = message.guild.roles.cache.find(x => x.id === "867519988520976385");
+  var musicclean = message.guild.roles.cache.find(x => x.id === "867520012582518814");
+  var adultclean = message.guild.roles.cache.find(x => x.id === "867520038768345088");
+  var pubroleclean = message.guild.roles.cache.find(x => x.id === "867520064495288340");
+  var gameurclean = message.guild.roles.cache.find(x => x.id === "867519905947320351");
+  var gameuseclean = message.guild.roles.cache.find(x => x.id === "867519870324310036");
+
   var playstation = message.guild.roles.cache.find(x => x.id === "726428190012211211");
   var pc = message.guild.roles.cache.find(x => x.id === "726428190012211212");
   var switchrole = message.guild.roles.cache.find(x => x.id === "726428189991108677");
@@ -49,18 +56,18 @@ module.exports.run = async (client, message) => {
     .setDescription(`Grâce à ces rôles tu va pouvoir accéder à différentes catégories du serveur...fais tes choix et amuse-toi bien !`)
     .addField(`Pour t'ajouter ou t'enlever un rôle, il te suffit de réagir avec l'emoji qui correspond...`,
       `
-    🛏 - Pour obtenir le rôle ${detente} qui te donneras accès à la catégorie Détente où tu pourras raconter des <#726428191186485387>, poser des <#726428191186485386>, jouer à des jeux proposés par les bots et pleins d'autres choses amusantes...
+    🛏 - Pour obtenir le rôle ${detenteclean} qui te donneras accès à la catégorie Détente où tu pourras raconter des <#726428191186485387>, poser des <#726428191186485386>, jouer à des jeux proposés par les bots et pleins d'autres choses amusantes...
 
-    🎮 - Pour obtenir le rôle ${gameuse} ou ${gameur} qui te donneras accès à la catégorie Gaming où tu pourras discuter de jeux vidéos et autres.Tu auras aussi la possibilité de <#726428191568298008> pour avoir accès à des salons spéciaux pour chaque jeu et t'identifier pour savoir sur quelle(s) plateforme(s) tu joue.
+    🎮 - Pour obtenir le rôle ${gameuseclean} ou ${gameurclean} qui te donneras accès à la catégorie Gaming où tu pourras discuter de jeux vidéos et autres.Tu auras aussi la possibilité de <#726428191568298008> pour avoir accès à des salons spéciaux pour chaque jeu et t'identifier pour savoir sur quelle(s) plateforme(s) tu joue.
     Si tu veux jouer sur mon serveur ${maxcraft}, c'est aussi via cette catégorie.
 
-    🎵 - Pour obtenir le rôle ${music} qui te donneras accès à la catégorie musique (<#726428192403095624>) où tu pourras discuter de chansons, d'artistes, etc... Il y a aussi un salon vocal pour écouter les musiques que tu veux.
+    🎵 - Pour obtenir le rôle ${musicclean} qui te donneras accès à la catégorie musique (<#726428192403095624>) où tu pourras discuter de chansons, d'artistes, etc... Il y a aussi un salon vocal pour écouter les musiques que tu veux.
     `)
     .addField(`\u200b`,
       `
-    🔞 - Pour obtenir le rôle ${adult} qui te donneras accès à la catégorie Coin des grands (<#726428194705768490>) où tu pourras discuter de diverses choses plus ou moins réservées aux adultes comme la <#726428194705768491> par exemple.
+    🔞 - Pour obtenir le rôle ${adultclean} qui te donneras accès à la catégorie Coin des grands (<#726428194705768490>) où tu pourras discuter de diverses choses plus ou moins réservées aux adultes comme la <#726428194705768491> par exemple.
 
-    ${pubemoji} - Pour obtenir le rôle ${pubrole} qui te donneras accès à la catégorie Publicités où tu auras la possibilité de faire de la pub pour tout ce que tu veux (serveurs, chaines YT ou Twitch, etc...) mais cela te permettras de voir les pubs des autres et ainsi tu pourras faire des découvertes intéressantes.
+    ${pubemoji} - Pour obtenir le rôle ${pubroleclean} qui te donneras accès à la catégorie Publicités où tu auras la possibilité de faire de la pub pour tout ce que tu veux (serveurs, chaines YT ou Twitch, etc...) mais cela te permettras de voir les pubs des autres et ainsi tu pourras faire des découvertes intéressantes.
     `)
   client.channels.cache.get("726428190427447365").bulkDelete(100)
   client.channels.cache.get("726428190427447365").send(roles_embed).then(function (message) {//salon choix des rôles, catégorie acceuil
