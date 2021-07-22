@@ -13,7 +13,7 @@ module.exports = async (client, member) => {
 
   var girls = member.guild.roles.cache.find(g => g.id === "726428190012211217");
   var boys = member.guild.roles.cache.find(b => b.id === "726428190012211216");
-  var other = member.guild.roles.cache.find(o => o.id === "824740975242117191");
+  var no_binary = member.guild.roles.cache.find(o => o.id === "824740975242117191");
 
   if (member.displayName.toLocaleLowerCase().includes("discord.gg")) {
     member.send("Ton pseudo ne respècte pas les règles du serveur, tu as donc été expulsé du serveur, reviens quand ton pseudo sera moins publicitaire !!!").catch(console.error).then(() => {
@@ -43,7 +43,7 @@ module.exports = async (client, member) => {
         
 👧 - Pour obtenir le rôle ${girls.toString()}
 👦 - Pour obtenir le rôle ${boys.toString()}
-⭕ - Pour obtenir le rôle ${other.toString()}
+🏳️‍🌈 - Pour obtenir le rôle ${no_binary.toString()}
 
 Pour découvrir les différentes catégories disponibles sur le serveur, aller dans <#726428190427447365> pour voir quelques petites explications en plus.`
       )
@@ -60,7 +60,7 @@ Pour découvrir les différentes catégories disponibles sur le serveur, aller d
     client.channels.cache.get("726428190427447360").send(welcome_embed).then(async msg => { //salon bienvenue, catégorie acceuil
       await msg.react('👧');
       await msg.react('👦');
-      await msg.react('⭕');
+      await msg.react('🏳️‍🌈');
     })
   }
 

@@ -23,7 +23,7 @@ module.exports = async (client, messageReaction, user) => {
 
   var girls = member.guild.roles.cache.find(gi => gi.id === "726428190012211217");
   var boys = member.guild.roles.cache.find(b => b.id === "726428190012211216");
-  var other = member.guild.roles.cache.find(o => o.id === "824740975242117191");
+  var no_binary = member.guild.roles.cache.find(o => o.id === "824740975242117191");
   var members = member.guild.roles.cache.find(m => m.id === "726428189978787873");
 
 
@@ -61,7 +61,7 @@ module.exports = async (client, messageReaction, user) => {
     return;
   }
 
-  if (['👧', '👦', '⭕'].includes(emoji) && message.channel.id === welcomechannel.id && member.roles.cache.find(m => m.id === "726428189978787873")) {
+  if (['👧', '👦', '🏳️‍🌈'].includes(emoji) && message.channel.id === welcomechannel.id && member.roles.cache.find(m => m.id === "726428189978787873")) {
     switch (emoji) {
       case '👧':
         messageReaction.users.remove(user);
@@ -80,11 +80,11 @@ module.exports = async (client, messageReaction, user) => {
         );
         message.reactions.removeAll()
         break;
-        case '⭕':
+        case '🏳️‍🌈':
           messageReaction.users.remove(user);
-          member.roles.add(other);
+          member.roles.add(no_binary);
           member.roles.remove(members).then(() => {
-            member.send(`Tu as bien obtenu le rôle ${other.name}.`).catch(console.error)
+            member.send(`Tu as bien obtenu le rôle ${no_binary.name}.`).catch(console.error)
           }
           );
           message.reactions.removeAll()
@@ -92,7 +92,7 @@ module.exports = async (client, messageReaction, user) => {
     };
   };
 
-  if (['👧', '👦', '⭕'].includes(emoji) && message.channel.id === annoncesmembreschannel.id && member.roles.cache.find(m => m.id === "726428189978787873")) {
+  if (['👧', '👦', '🏳️‍🌈'].includes(emoji) && message.channel.id === annoncesmembreschannel.id && member.roles.cache.find(m => m.id === "726428189978787873")) {
     switch (emoji) {
       case '👧':
         messageReaction.users.remove(user);
@@ -108,11 +108,11 @@ module.exports = async (client, messageReaction, user) => {
           member.send(`Tu as bien obtenu le rôle ${boys.name}.`).catch(console.error)
         });
         break;
-        case '⭕':
+        case '🏳️‍🌈':
           messageReaction.users.remove(user);
-          member.roles.add(other);
+          member.roles.add(no_binary);
           member.roles.remove(members).then(() => {
-            member.send(`Tu as bien obtenu le rôle ${other.name}.`).catch(console.error)
+            member.send(`Tu as bien obtenu le rôle ${no_binary.name}.`).catch(console.error)
           });
           break;
     };
