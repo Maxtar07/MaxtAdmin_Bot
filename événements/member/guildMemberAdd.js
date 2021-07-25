@@ -64,11 +64,4 @@ Pour découvrir les différentes catégories disponibles sur le serveur, aller d
     })
   }
 
-
-
-
-  //Invite counter
-
-
-
 }
