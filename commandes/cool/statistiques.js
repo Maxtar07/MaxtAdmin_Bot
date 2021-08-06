@@ -47,7 +47,7 @@ module.exports.run = async (client, message) => {
       name: 'expérience', value: `${member.user.username} à ${exp} points d'expérience et est au niveau ${lvl}`, inline: false
     },
     {
-      name: 'Rôles possédés', value: `${member.roles.cache.map(roles => `\`${roles.name}\``).join(", ")}`, inline: true
+      name: 'Rôles possédés', value: `${member.roles.cache.sort((a, b) => b.position - a.position).map(roles => `${roles}`).join(",\n")}`, inline: true
     },
     //{
     //name: '\u200b', value: `\u200b`, inline: true
