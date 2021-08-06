@@ -13,7 +13,7 @@ module.exports.run = (client, message) => {
       `
 - **ID du serveur:** ${guild.id}
 - **Boss:** Le boss du serveur est ${guild.owner.user.tag}
-- **Rôles:** Il y à ${guild.roles.cache.size} rôles.
+- **Rôles:** Il y a ${guild.roles.cache.size} rôles.
 - **Serveur créé le:** ${moment.utc(guild.createdAt).format('LL')}
 - **Nombre de bots:** ${guild.members.cache.filter(m => m.user.bot).size}
 - **Nombre de membres:** ${guild.members.cache.filter(m => !m.user.bot).size}
@@ -22,6 +22,8 @@ module.exports.run = (client, message) => {
 - **Nombre de filles en ligne:** ${guild.roles.cache.find(r => r.id === '726428190012211217').members.filter(m => m.presence.status === 'online').size}
 - **Nombre de garçons :** ${guild.roles.cache.find(r => r.id === '726428190012211216').members.size}
 - **Nombre de garçons en ligne:** ${guild.roles.cache.find(r => r.id === '726428190012211216').members.filter(m => m.presence.status === 'online').size}
+- **Nombre de non-binaires :** ${guild.roles.cache.find(r => r.id === '824740975242117191').members.size}
+- **Nombre de non-binaires en ligne:** ${guild.roles.cache.find(r => r.id === '824740975242117191').members.filter(m => m.presence.status === 'online').size}
 - **Nombre de membres hors ligne:** ${guild.members.cache.filter(m => m.presence.status === 'offline').filter(m => !m.user.bot).size}
 - **Nombre de catégories:** ${guild.channels.cache.filter(chan => chan.type === 'category').size}
 - **Nombre de salons textuels:** ${guild.channels.cache.filter(chan => chan.type === 'text').size}
