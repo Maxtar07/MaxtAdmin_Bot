@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message) => {
 
-  var members = member.guild.roles.cache.find(m => m.id === "726428189978787873");
-  var girls = member.guild.roles.cache.find(g => g.id === "726428190012211217");
-  var boys = member.guild.roles.cache.find(b => b.id === "726428190012211216");
-  var no_binary = member.guild.roles.cache.find(o => o.id === "824740975242117191");
+  var members = message.guild.roles.cache.find(m => m.id === "726428189978787873");
+  var girls = message.guild.roles.cache.find(g => g.id === "726428190012211217");
+  var boys = message.guild.roles.cache.find(b => b.id === "726428190012211216");
+  var no_binary = message.guild.roles.cache.find(o => o.id === "824740975242117191");
 
   var rappel_embed = new Discord.MessageEmbed()
     .setColor('RANDOM')

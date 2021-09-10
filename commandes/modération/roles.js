@@ -98,7 +98,7 @@ module.exports.run = async (client, message) => {
   .addField(`Pour t'ajouter ou t'enlever un rôle, il te suffit de réagir avec l'emoji qui correspond...`,
     `
   ${twitchemoji} - Si tu veux être informé des streams ou toute annonce importante concernant Twitch.
-  🔔 - Si tu veux recevoir les notifications de mention pour les annonces générales concernant le discord (équivalent à here ou everyone, mais évite de mentionner les gens qui veulent pas l'être.)
+  🔔 - Si tu veux recevoir les notifications de mention pour les annonces générales concernant le discord (équivalent à here ou everyone, mais évite de mentionner les gens qui ne veulent pas l'être.)
   `)
 client.channels.cache.get("726428190427447365").send(notifs_embed).then(function (message) {//salon choix-des-notifs, catégorie accueil
   message.react(twitchemoji).then(() => {
