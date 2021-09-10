@@ -3,18 +3,18 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message) => {
 
-  var members = message.guild.roles.cache.find(x => x.name === "Membres");
-  var girls = message.guild.roles.cache.find(x => x.name === "Filles");
-  var boys = message.guild.roles.cache.find(x => x.name === "Garçons");
-  var no_binary = message.guild.roles.cache.find(o => o.name === "Autres");
+  var members = member.guild.roles.cache.find(m => m.id === "726428189978787873");
+  var girls = member.guild.roles.cache.find(g => g.id === "726428190012211217");
+  var boys = member.guild.roles.cache.find(b => b.id === "726428190012211216");
+  var no_binary = member.guild.roles.cache.find(o => o.id === "824740975242117191");
 
   var rappel_embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle(`Petit rappel pour les nouveaux`)
     .addField(`Si tu n'as pas encore fait ton choix et si tu veux accéder au reste du serveur, il te suffit de réagir avec ce qui te convient :`,
 `
-👧 - pour obtenir le rôle ${ girls}
-👦 - pour obtenir le rôle ${ boys}
+👧 - pour obtenir le rôle ${girls}
+👦 - pour obtenir le rôle ${boys}
 🏳️‍🌈 - Pour obtenir le rôle ${no_binary}
 
 
