@@ -16,6 +16,7 @@ module.exports.run = async (client, message, args) => {
     .setTitle('Calcul Mathématique')
     .addField('Calcul', `\`\`\`js\n${args.join('')}\`\`\``)
     .addField('Résultat', `\`\`\`js\n${resp}\`\`\``)
+    .setFooter(`calcul demandé par : ${message.author.tag}`)
 
     message.channel.send(math_embed)
 }
