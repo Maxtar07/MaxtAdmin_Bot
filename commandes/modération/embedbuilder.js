@@ -70,7 +70,7 @@ module.exports.run = async(client, message, args, messageReaction) => {
                 }
             break;
             case '🔳':
-                const msgQuestionThumbnail = await message.channel.send('Quelle image souhaitez-vous mettre en thumbnail ?\nÉcrivez "rien" si vous souhaitez supprimer le thumbnail actuel.');
+                const msgQuestionThumbnail = await message.channel.send('Quelle image souhaitez-vous mettre en thumbnail ?\nÉcrivez "rien" si vous souhaitez supprimer le thumbnail actuel ou ne pas en mettre.');
                 const thumbnail = (await message.channel.awaitMessages(filterMessage, {max: 1, time: 60000})).first();
                 msgQuestionThumbnail.delete();
                 thumbnail.delete();
@@ -88,7 +88,7 @@ module.exports.run = async(client, message, args, messageReaction) => {
                 msgEmbedForEditing.edit(embedBeforeEdit);
             break;
             case '🖼️':
-                const msgQuestionImage = await message.channel.send('Quelle Image souhaitez-vous mettre ?\nÉcrivez "rien" si vous souhaitez supprimer l\'image actuelle.');
+                const msgQuestionImage = await message.channel.send('Quelle Image souhaitez-vous mettre ?\nÉcrivez "rien" si vous souhaitez supprimer l\'image actuelle ou ne pas en mettre.');
                 const image = (await message.channel.awaitMessages(filterMessage, {max: 1, time: 60000})).first();
                 msgQuestionImage.delete();
                 image.delete();
@@ -102,12 +102,18 @@ module.exports.run = async(client, message, args, messageReaction) => {
                 }
             break;
             case '🌐':
-                const msgQuestionURL = await message.channel.send('Quelle URL souhaitez-vous mettre ?');
+                const msgQuestionURL = await message.channel.send('Quelle URL souhaitez-vous mettre ?\nÉcrivez "rien" si vous ne souhaitez supprimer l\'url actuelle ou ne pas en mettre.');
                 const url = (await message.channel.awaitMessages(filterMessage, {max: 1, time: 60000})).first();
-                url.delete();
                 msgQuestionURL.delete();
-                embedBeforeEdit.setURL(url.content);
-                msgEmbedForEditing.edit(embedBeforeEdit);
+                url.delete();
+                if(url.content.toLowerCase().includes("rien")){
+                    delete embedBeforeEdit.url
+                    msgEmbedForEditing.edit(embedBeforeEdit);
+                }else{
+                    if(!url.content.includes('http')) return message.channel.send('URL Incorrecte !\nVeuillez appuyer de nouveau sur la réaction et mettre une vraie url commençant par http ou https...').then((error) => error.delete({timeout : 5000}))
+                    embedBeforeEdit.setURL(url.content);
+                    msgEmbedForEditing.edit(embedBeforeEdit);
+                }
             break;
             case '🔵':
                 const msgQuestionColor = await message.channel.send('De quelle couleur souhaitez-vous que votre embed soit ?\n__deux possibilités :__\n-#000000\nou\n-RED / YELLOW / etc...');
