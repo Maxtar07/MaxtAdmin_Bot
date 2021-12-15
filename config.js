@@ -5,7 +5,7 @@ module.exports = {
   LAVALINK_PASSWORD: "mon_password",
   DBCONNECTION: "mongodb+srv://Maxtar07:mon_password@bot-database.py6ow.mongodb.net/maxtadmin?retryWrites=true&w=majority",
   DEFAULTSETTINGS: {
-    prefix: "/",
+    prefix: "$",
     logChannel: "logs-bot",
     welcomeMessage: "{{embed de bienvenue}}"
   },
