@@ -15,10 +15,10 @@ module.exports.run = async(client, message, args) => {
                 number = parseInt(args[1]) - 1
             }
             data.content.splice(number, 1)
-            message.channel.send(`l\'avertissement numéro ${number +1} à été supprimé !`)
+            message.channel.send(`l\'avertissement numéro ${number +1} de \`${user.user.tag}\` à été supprimé !`)
             data.save()
         } else {
-            message.channel.send('Ce membre n\'as aucun avertissement !')
+            message.channel.send(`\`${user.user.tag}\` n\'as aucun avertissement !`)
         }
     })
 

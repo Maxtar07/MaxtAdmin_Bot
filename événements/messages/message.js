@@ -42,13 +42,12 @@ module.exports = async (client, message) => {
 
   if(message.content.toLocaleLowerCase().includes('399136754130485248')){
     if(message.member.roles.cache.find(m => m.id === "738812943613034566") || message.member.roles.cache.find(b => b.id === "726428190012211219")){
-      const rien = 'rien'
     }else{
       if (message.channel.id === '735813289488941076'){
-        message.channel.send(`/warn ${message.member.user} En effectuant cette commande tu mentionne le BOSS.`)
+        message.channel.send(`${settings.prefix}warn ${message.member.user} En effectuant cette commande tu mentionne le BOSS.`)
       }else{
         message.delete({ timeout: 0 }).then(() => {
-          message.channel.send(`/warn ${message.member.user} Attention ! Ne pas mentionner le BOSS SVP !!`)
+          message.channel.send(`${settings.prefix}warn ${message.member.user} Attention ! Ne pas mentionner le BOSS SVP !!`)
         })
       }
     }
@@ -57,9 +56,9 @@ module.exports = async (client, message) => {
 
   //message d'aide à la mention du bot
 
-  if(!message.content.startsWith('/') && message.content.toLocaleLowerCase().includes('478597077723643905')){
+  if(!message.content.startsWith(settings.prefix) && message.content.toLocaleLowerCase().includes('478597077723643905')){
     if (message.author.bot) return
-    message.channel.send("Pour avoir toutes les commandes disponibles avec le bot rendez-vous dans <#735813289488941076> et faites la commande /help").then((message) => {
+    message.channel.send(`Pour avoir toutes les commandes disponibles avec le bot rendez-vous dans <#735813289488941076> et faites la commande ${settings.prefix}help`).then((message) => {
       message.delete({ timeout: 20000 });
     })
   }
@@ -191,7 +190,7 @@ module.exports = async (client, message) => {
     if (command.help.isUserModo && message.guild.member(user).roles.cache.find(x => x.id === "738812943613034566") && message.member.roles.cache.find(x => x.id === "738812943613034566")) return message.reply("Tu ne peux pas utiliser cette commande sur un membre du même rang que toi !");
   }
 
-  if (command.help.command && (!(message.channel.id === '735813289488941076' || message.member.roles.cache.find(x => x.id === "738812943613034566")))) {
+  if (command.help.command && (!(message.channel.id === '735813289488941076' || message.member.roles.cache.find(x =>x.id === "737239692818251786") || message.member.roles.cache.find(x => x.id === "738812943613034566")))) {
     message.delete()
     return message.reply(`Pour les commandes c'est ici : <#735813289488941076>`).then((message) => {
       message.delete({ timeout: 5000 });

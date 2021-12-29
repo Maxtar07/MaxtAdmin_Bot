@@ -165,7 +165,7 @@ const options = {
     },
     identity: {
         username: 'MaxtAdmin',
-        password: 'password',
+        password: 'mon_password',
     },
     channels: ['maxtar07'],
 };

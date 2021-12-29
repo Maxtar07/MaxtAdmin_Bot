@@ -321,7 +321,7 @@ module.exports = async (client, messageReaction, user) => {
 
         let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
         if(!logchannel) return
-        logchannel.send(`${user.username} à créer un salon privé ! Voici le salon ${channel}`)
+        logchannel.send(`${user.username} à ouvert un ticket ! Voici le salon ${channel}`)
 
       break;
     };

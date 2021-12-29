@@ -9,9 +9,9 @@ module.exports.run = async(client, message, args) => {
         if(err) throw err;
         if(data) {
             await db.findOneAndDelete({ user : user.user.id, guildid: message.guild.id})
-            message.channel.send(`Tous les avertissements de ${user.user.tag} ont été supprimés !`)
+            message.channel.send(`Tous les avertissements de \`${user.user.tag}\` ont été supprimés !`)
         } else {
-            message.channel.send('Ce membre n\'as aucun avertissement !')
+            message.channel.send(`\`${user.user.tag}\` n\'as aucun avertissement !`)
         }
     })
 }

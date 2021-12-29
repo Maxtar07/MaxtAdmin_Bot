@@ -2,7 +2,7 @@ const db = require('../../models/warns')
 const { Message, MessageEmbed } = require('discord.js')
 const { MESSAGES } = require('../../util/constantes');
 
-module.exports.run = async(client, message, args) => {
+module.exports.run = async(client, message, args, settings) => {
 
     const user = message.mentions.members.first() || message.guild.members.cache.get(args[0])
     if(!user) return message.channel.send('Le membre n\'as pas été trouvé !')
@@ -52,8 +52,8 @@ module.exports.run = async(client, message, args) => {
     message.channel.send(new MessageEmbed()
     .setTitle(`Warn !`)
     .setDescription(`${user} à reçu un avertissement !\n**Modérateur:** ${message.author}\n**Raison:** ${reason}`)
-    .setColor('BLUE')
-    .setFooter(`/warns @${user.user.username} pour voir la liste de ses warns`)
+    .setColor('ORANGE')
+    .setFooter(`${settings.prefix}warns @${user.user.username} pour voir la liste de ses warns`)
     )
 
 }
