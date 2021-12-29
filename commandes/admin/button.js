@@ -4,7 +4,7 @@ const axios = require('axios');
 module.exports.run = async (client, message, args) => {
     client.config = require("./config");
     const headers = {
-        'Authorization': `Bot NDc4NTk3MDc3NzIzNjQzOTA1.W3GuQw.JyFRpcEvlphof2OCodr0IzNq1wM`
+        'Authorization': `Bot mon_token`
     };
 
     await axios.post(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
