@@ -628,6 +628,26 @@ const MESSAGES = {
         musiccommand: false,
         cooldown: 0,//temps en secondes
       },
+      RECLAM: {
+        name: "reclam",
+        aliases: ['reclam'],
+        category: 'modération',
+        description: "Envoi un embed dans le salon #réclams avec une réaction pour que les membres puissent réagir et ouvre un salon de réclam pour parler en privé avec les admins et/ou les modos si ils ont un soucis sur le serveur MaxCraft.",
+        usage: '',
+        admin: true,
+        modo: false,
+        ban: false,
+        mute: false,
+        kick: false,
+        managemessages: false,
+        dj: false,
+        args: false,
+        isUserAdmin: false,
+        isUserModo: false,
+        command: true,
+        musiccommand: false,
+        cooldown: 0,//temps en secondes
+      },
       ROLES: {
         name: "roles",
         aliases: ['roles', 'r'],

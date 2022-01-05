@@ -6,6 +6,8 @@ module.exports = async (client, message) => {
 
   if (message.channel.type === "dm") return client.emit("directMessage", message);
 
+  if (message.webhookID) return;
+
   let logchannel = message.guild.channels.cache.find(c => c.id == "726428190024925212")
 
   const settings = await client.getGuild(message.guild);
@@ -107,6 +109,20 @@ module.exports = async (client, message) => {
 
   //ajouter membre à un ticket
   if(message.channel.name.startsWith('ticket-')){
+    const user = message.mentions.users.first();
+    if(!user){
+      return
+    }else{
+      message.channel.updateOverwrite(user, {
+        'VIEW_CHANNEL': true,
+        'SEND_MESSAGES': true,
+        'READ_MESSAGE_HISTORY': true
+      })
+    }
+  }
+
+  //ajouter membre à une réclam
+  if(message.channel.name.startsWith('réclam-')){
     const user = message.mentions.users.first();
     if(!user){
       return

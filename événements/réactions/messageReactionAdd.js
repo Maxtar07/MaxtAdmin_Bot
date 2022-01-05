@@ -15,6 +15,7 @@ module.exports = async (client, messageReaction, user) => {
   const choixjeuxchannel = message.guild.channels.cache.find(c => c.id === '726428191568298008')
   const choixjeuxnintendochannel = message.guild.channels.cache.find(c => c.id === '726428192146980922')
   const demandedeprivechannel = message.guild.channels.cache.find(c => c.id === '726428195187851317')
+  const reclamchannel = message.guild.channels.cache.find(c => c.id === '777492656427237406')
 
 
 
@@ -327,7 +328,50 @@ module.exports = async (client, messageReaction, user) => {
     };
   };
 
+  if (['📩'].includes(emoji) && message.channel.id === reclamchannel.id) {
+    switch (emoji) {
+      case '📩':
+        messageReaction.users.remove(user);
+        let reclamusername = user.username;
+        let reclamcategoryID = '738480267932729356'
+        let reclamchannel = await message.guild.channels.create(`réclam-${reclamusername}`, {type: 'text', parent: message.guild.channels.cache.get(reclamcategoryID)});
+
+        reclamchannel.updateOverwrite(message.guild.roles.everyone, {'VIEW_CHANNEL': false});
+        reclamchannel.updateOverwrite(member, {
+          'VIEW_CHANNEL': true,
+          'SEND_MESSAGES': true,
+          'READ_MESSAGE_HISTORY': true
+        });
+        reclamchannel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '738812943613034566'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true})
+        reclamchannel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '726428190024925207'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true})
+
+        var closereclam = new Discord.MessageEmbed()
+        .setTitle('Voici votre salon de réclam pour expliquer le problème que vous rencontrez sur le serveur Minecraft')
+        .setDescription(`Dans votre message vous devez fournir un screen de la zone, les coordonnées exact du bloc cassé, ou du coffre volé pour que je puisse le trouver facilement si je vais régler le problème quand vous n'êtes pas connecté.
+        Merci de votre compréhension.
+        Un admin ou un modo vous répondras dans les plus brefs délais.
+        Si vous souhaitez ajouter un membre quelconque à la réclam car il est concerné par celle-ci veuillez le mentionner, il y sera ajouté automatiquement.`)
+        .setFooter('Réagir avec 🔒 pour fermer ce salon !')
+        reclamchannel.send(`${member}`)
+        reclamchannel.send(closereclam).then(async msg => msg.react('🔒'))
+
+        let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
+        if(!logchannel) return
+        logchannel.send(`${user.username} à ouvert une réclam ! Voici le salon ${reclamchannel}`)
+
+      break;
+    };
+  };
+
   if (['🔒'].includes(emoji) && message.channel.name.startsWith('ticket')) {
+    switch (emoji) {
+      case '🔒':
+        message.channel.delete()
+      break;
+    }
+  }
+
+  if (['🔒'].includes(emoji) && message.channel.name.startsWith('réclam')) {
     switch (emoji) {
       case '🔒':
         message.channel.delete()
