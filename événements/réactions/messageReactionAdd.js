@@ -299,30 +299,37 @@ module.exports = async (client, messageReaction, user) => {
     switch (emoji) {
       case '📩':
         messageReaction.users.remove(user);
-        let username = user.username;
-        let categoryID = '726428195187851316'
-        let channel = await message.guild.channels.create(`Ticket-${username}`, {type: 'text', parent: message.guild.channels.cache.get(categoryID)});
+        let ticketusername = user.username;
+        let ticketcategoryID = '726428195187851316'
+        let ticketchannel = await message.guild.channels.create(`Ticket-${ticketusername}`, {type: 'text', parent: message.guild.channels.cache.get(ticketcategoryID)});
 
-        channel.updateOverwrite(message.guild.roles.everyone, {'VIEW_CHANNEL': false});
-        channel.updateOverwrite(member, {
+        ticketchannel.updateOverwrite(message.guild.roles.everyone, {'VIEW_CHANNEL': false});
+        ticketchannel.updateOverwrite(member, {
           'VIEW_CHANNEL': true,
           'SEND_MESSAGES': true,
+          'ATTACH_FILES': true,
           'READ_MESSAGE_HISTORY': true
         });
-        channel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '738812943613034566'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true})
-        channel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '726428190024925207'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true})
+        ticketchannel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '738812943613034566'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'ATTACH_FILES': true, 'READ_MESSAGE_HISTORY': true})
+        ticketchannel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '726428190024925207'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'ATTACH_FILES': true, 'READ_MESSAGE_HISTORY': true})
 
         var closeticket = new Discord.MessageEmbed()
         .setTitle('Voici votre salon privé pour parler tranquillement avec les admins/modos')
         .setDescription(`Veuillez expliquer votre problème dans ce salon, un admin ou un modo vous répondras dans les plus brefs délais.
         Si vous souhaitez ajouter un membre quelconque au ticket car il est concerné par celui-ci veuillez le mentionner, il y sera ajouté automatiquement.`)
         .setFooter('Réagir avec 🔒 pour fermer ce salon !')
-        channel.send(`${member}`)
-        channel.send(closeticket).then(async msg => msg.react('🔒'))
+        ticketchannel.send(`${member}`)
+        ticketchannel.send(closeticket).then(async msg => msg.react('🔒'))
+
+        const openticketembed = new Discord.MessageEmbed()
+        .setTitle(`${ticketusername} à ouvert un ticket !`)
+        .setColor('GREEN')
+        .setDescription(`Voici le salon : ${ticketchannel}`)
+        .setTimestamp()
 
         let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
         if(!logchannel) return
-        logchannel.send(`${user.username} à ouvert un ticket ! Voici le salon ${channel}`)
+        logchannel.send(openticketembed)
 
       break;
     };
@@ -340,6 +347,7 @@ module.exports = async (client, messageReaction, user) => {
         reclamchannel.updateOverwrite(member, {
           'VIEW_CHANNEL': true,
           'SEND_MESSAGES': true,
+          'ATTACH_FILES': true,
           'READ_MESSAGE_HISTORY': true
         });
         reclamchannel.updateOverwrite(message.guild.roles.cache.find(role => role.id == '738812943613034566'), {'VIEW_CHANNEL': true, 'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true})
@@ -355,9 +363,15 @@ module.exports = async (client, messageReaction, user) => {
         reclamchannel.send(`${member}`)
         reclamchannel.send(closereclam).then(async msg => msg.react('🔒'))
 
+        const openreclamembed = new Discord.MessageEmbed()
+        .setTitle(`${reclamusername} à ouvert une réclam !`)
+        .setColor('GREEN')
+        .setDescription(`Voici le salon : ${reclamchannel}`)
+        .setTimestamp()
+
         let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
         if(!logchannel) return
-        logchannel.send(`${user.username} à ouvert une réclam ! Voici le salon ${reclamchannel}`)
+        logchannel.send(openreclamembed)
 
       break;
     };
