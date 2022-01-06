@@ -5,6 +5,7 @@ const { MESSAGES } = require('../../util/constantes');
 module.exports.run = async (client, message, args) => {
   const user = message.guild.member(message.mentions.users.first());
   let muteTime = (args[1] || '60s');
+  let muteReason = (args.slice(2).join(" ") || 'aucune raison spécifiée');
   let muteRole = message.guild.roles.cache.find(r => r.name === 'muted');
 
   if (!user) {
@@ -22,16 +23,12 @@ module.exports.run = async (client, message, args) => {
     })
   })
 
-  message.channel.send(`<@${user.id}> est muté pour ${ms(ms(muteTime))}.`);
+  message.channel.send(`<@${user.id}> est muté pour ${ms(ms(muteTime))} pour la raison : ${muteReason}.`);
 
   setTimeout(() => {
     user.roles.remove(muteRole.id);
     message.guild.channels.cache.forEach(async (channel) => {
-      await channel.updateOverwrite(user, {
-        SEND_MESSAGES: null,
-        ADD_REACTIONS: null,
-        CONNECT: null
-      })
+      await channel.permissionOverwrites.get(user.id).delete();
     })
     message.channel.send(`<@${user.id}> n'est plus muté.`);
   }, ms(muteTime));
@@ -39,7 +36,7 @@ module.exports.run = async (client, message, args) => {
   const embed = new MessageEmbed()
     .setAuthor(`${user.user.username} (${user.id})`, user.user.avatarURL())
     .setColor("ffa500")
-    .setDescription(`**Action**: mute\n**Temps**: ${ms(ms(muteTime))}`)
+    .setDescription(`**Action**: mute\n**Temps**: ${ms(ms(muteTime))}\n**Raison**: ${muteReason}`)
     .setTimestamp()
     .setFooter(message.author.username, message.author.avatarURL())
 
