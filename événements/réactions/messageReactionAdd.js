@@ -1,5 +1,7 @@
-const { Message, DiscordAPIError } = require("discord.js");
+const { Message, DiscordAPIError, MessageEmbed } = require("discord.js");
 const Discord = require('discord.js');
+const dbticket = require('../../models/tickets');
+const dbreclam = require('../../models/reclams');
 
 module.exports = async (client, messageReaction, user) => {
   const message = messageReaction.message;
@@ -329,8 +331,31 @@ module.exports = async (client, messageReaction, user) => {
 
         let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
         if(!logchannel) return
-        logchannel.send(openticketembed)
+        let infoticket = await logchannel.send(openticketembed)
 
+        dbticket.findOne({ NewTicket: `ouverture d'un nouveau ticket(${ticketchannel.id}) par ${ticketusername}`}, async(err, data) => {
+          if(err) throw err;
+          if(!data) {
+            data = new dbticket({
+              NewTicket: `ouverture d'un nouveau ticket(${ticketchannel.id}) par ${ticketusername}`,
+              content : [
+                {
+                  channelId: ticketchannel.id,
+                  messageId: infoticket.id,
+                  opennerId: user.id
+                }
+              ]
+            })
+          } else {
+              const obj = {
+                channelId: ticketchannel.id,
+                messageId: infoticket.id,
+                opennerId: user.id
+              }
+              data.content.push(obj)
+          }
+          data.save()
+        });
       break;
     };
   };
@@ -371,7 +396,31 @@ module.exports = async (client, messageReaction, user) => {
 
         let logchannel = message.guild.channels.cache.find(c => c.id == "787998388208533504")
         if(!logchannel) return
-        logchannel.send(openreclamembed)
+        let inforeclam = await logchannel.send(openreclamembed)
+
+        dbreclam.findOne({ NewReclam: `ouverture d'une nouvelle reclam(${reclamchannel.id}) par ${reclamusername}`}, async(err, data) => {
+          if(err) throw err;
+          if(!data) {
+            data = new dbreclam({
+              NewReclam: `ouverture d'une nouvelle reclam(${reclamchannel.id}) par ${reclamusername}`,
+              content : [
+                {
+                  channelId: reclamchannel.id,
+                  messageId: inforeclam.id,
+                  opennerId: user.id
+                }
+              ]
+            })
+          } else {
+              const obj = {
+                channelId: reclamchannel.id,
+                messageId: infosreclam.id,
+                opennerId: user.id
+              }
+              data.content.push(obj)
+          }
+          data.save()
+        });
 
       break;
     };
@@ -380,7 +429,22 @@ module.exports = async (client, messageReaction, user) => {
   if (['🔒'].includes(emoji) && message.channel.name.startsWith('ticket')) {
     switch (emoji) {
       case '🔒':
-        message.channel.delete()
+        dbticket.findOne({ NewTicket: `ouverture d'un nouveau ticket(${message.channel.id}) par ${user.username}`}, async(err, data) => {
+          if(err) throw err
+          if(data){
+            const infoTicketId = await data.content[0].messageId
+              const openticketembed2 = new Discord.MessageEmbed()
+              .setTitle(`${user.username} à fermé son ticket !`)
+              .setColor('RED')
+              .setTimestamp()
+              const openticketedit = await client.channels.cache.get('787998388208533504').messages.fetch(infoTicketId)
+              openticketedit.edit(openticketembed2)
+              await dbticket.findOneAndDelete({ NewTicket: `ouverture d'un nouveau ticket(${message.channel.id}) par ${user.username}`})
+              await message.channel.delete()
+          }else{
+            return;
+          }
+        });
       break;
     }
   }
@@ -388,7 +452,22 @@ module.exports = async (client, messageReaction, user) => {
   if (['🔒'].includes(emoji) && message.channel.name.startsWith('réclam')) {
     switch (emoji) {
       case '🔒':
-        message.channel.delete()
+        dbreclam.findOne({ NewReclam: `ouverture d'une nouvelle reclam(${message.channel.id}) par ${user.username}`}, async(err, data) => {
+          if(err) throw err
+          if(data){
+            const infoReclamId = await data.content[0].messageId
+              const openreclamembed2 = new Discord.MessageEmbed()
+              .setTitle(`${user.username} à fermé sa réclam !`)
+              .setColor('RED')
+              .setTimestamp()
+              const openreclamedit = await client.channels.cache.get('787998388208533504').messages.fetch(infoReclamId)
+              openreclamedit.edit(openreclamembed2)
+              await dbreclam.findOneAndDelete({ NewReclam: `ouverture d'une nouvelle reclam(${message.channel.id}) par ${user.username}`})
+              await message.channel.delete()
+          }else{
+            return;
+          }
+        });
       break;
     }
   }
