@@ -1,6 +1,26 @@
 const MESSAGES = {
   COMMANDES: {
     ADMIN: {
+      ADDROLEEVERYONE: {
+        name: "addroleeveryone",
+        aliases: ['addroleeveryone', 'addall', 'roleall'],
+        category: 'admin',
+        description: "Commande pour ajouter les rôles de base à TOUS les membres du discord",
+        usage: '',
+        admin: true,
+        modo: false,
+        ban: false,
+        mute: false,
+        kick: false,
+        managemessages: false,
+        dj: false,
+        args: false,
+        isUserAdmin: false,
+        isUserModo: false,
+        command: true,
+        musiccommand: false,
+        cooldown: 0,//temps en secondes
+      },
       BUTTON: {
         name: "button",
         aliases: ['button'],
@@ -100,27 +120,7 @@ const MESSAGES = {
         command: true,
         musiccommand: false,
         cooldown: 0,//temps en secondes
-      },
-      ADDROLEEVERYONE: {
-        name: "addroleeveryone",
-        aliases: ['addroleeveryone', 'addall', 'roleall'],
-        category: 'admin',
-        description: "Commande pour ajouter des roles à TOUS les membres du discord",
-        usage: '',
-        admin: true,
-        modo: false,
-        ban: false,
-        mute: false,
-        kick: false,
-        managemessages: false,
-        dj: false,
-        args: false,
-        isUserAdmin: false,
-        isUserModo: false,
-        command: true,
-        musiccommand: false,
-        cooldown: 0,//temps en secondes
-      },
+      }
     },
     COOL: {
       EIGHTBALL: {
