@@ -23,9 +23,9 @@ module.exports = async (client, member) => {
 
   if (member.user.bot) {
     var bot = member.guild.roles.cache.find(bot => bot.id === "726428190012211219")
-    var botcat = member.guild.roles.cache.find(botcat => botcat.id === "844992566789013575")
+    var botcategory = member.guild.roles.cache.find(botcategory => botcategory.id === "844992566789013575")
     member.roles.add(bot).then(()=> {
-      member.roles.Add(botcat)
+      member.roles.add(botcategory)
     })
   } else {
 
